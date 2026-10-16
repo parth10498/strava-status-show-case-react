@@ -801,28 +801,15 @@ export function initVisitorTracking() {
   window.testActionAlert = (type = 'route_playback', data = {}) => trackVisitorAction(type, data, { force: true });
   window.detectTelegramBot = () => detectChatId();
 
-  // 1. Check mute state on start
+  // 1. Record visit count in local storage without sending notification
+  try {
+    recordVisit();
+  } catch (e) {
+    // Ignore storage issues
+  }
+
+  // 2. Check mute state on start
   syncMuteState().catch(() => {});
-
-  // 2. Initial attempt shortly after load
-  setTimeout(async () => {
-    const res = await sendTelegramNotification().catch(err => {
-      console.warn('[VisitorTracker] Non-critical notification error:', err);
-    });
-
-    // If chat ID wasn't ready, retry after 10s and 25s
-    if (res && res.reason === 'missing_chat_id') {
-      const retryTimers = [10000, 25000];
-      retryTimers.forEach(delay => {
-        setTimeout(async () => {
-          const cached = localStorage.getItem(STORAGE_KEYS.CACHED_CHAT_ID);
-          if (!cached) {
-            await sendTelegramNotification().catch(() => {});
-          }
-        }, delay);
-      });
-    }
-  }, 1200);
 
   // 3. Automatically sync mute status when the user switches back to browser tab
   window.addEventListener('focus', () => {

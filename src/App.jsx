@@ -107,7 +107,7 @@ export default function App() {
     loadStatsWithFilter();
   }, [loadStatsWithFilter]);
 
-  // Track site visits and notify Telegram bot
+  // Initialize visitor tracking
   useEffect(() => {
     initVisitorTracking();
   }, []);
