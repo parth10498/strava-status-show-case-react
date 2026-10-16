@@ -42,6 +42,7 @@ export default function AllActivityHeatmap({ onSelectActivityForMap, initialSpor
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const layerGroupRef = useRef(null);
+  const allBoundsRef = useRef(null);
 
   const [cartoKey, setCartoKey] = useState(getCartoApiKey());
   const [showKeyModal, setShowKeyModal] = useState(false);
@@ -55,6 +56,18 @@ export default function AllActivityHeatmap({ onSelectActivityForMap, initialSpor
   const [basemapKey, setBasemapKey] = useState(getCartoApiKey() ? 'dark' : 'osm_dark');
   const [glowIntensity, setGlowIntensity] = useState('high'); // 'subtle', 'normal', 'high', 'blaze'
   const [selectedRoute, setSelectedRoute] = useState(null);
+
+  const handleFocusSurat = () => {
+    if (mapInstanceRef.current) {
+      mapInstanceRef.current.flyTo([21.0936, 73.2755], 13, { duration: 1.2 });
+    }
+  };
+
+  const handleFitAll = () => {
+    if (mapInstanceRef.current && allBoundsRef.current && allBoundsRef.current.isValid()) {
+      mapInstanceRef.current.fitBounds(allBoundsRef.current, { padding: [40, 40], maxZoom: 15 });
+    }
+  };
 
   // Sync when initialSport prop changes externally
   useEffect(() => {
@@ -150,25 +163,25 @@ export default function AllActivityHeatmap({ onSelectActivityForMap, initialSpor
     const allBounds = L.latLngBounds([]);
 
     // Intensity styling configurations
-    let baseOpacity = 0.45;
-    let baseWeight = 2.4;
-    let glowWeight = 6.0;
-    let glowOpacity = 0.22;
+    let baseOpacity = 0.65;
+    let baseWeight = 2.8;
+    let glowWeight = 7.5;
+    let glowOpacity = 0.35;
 
     if (glowIntensity === 'subtle') {
-      baseOpacity = 0.35;
-      baseWeight = 1.8;
-      glowOpacity = 0.12;
+      baseOpacity = 0.45;
+      baseWeight = 2.0;
+      glowOpacity = 0.18;
     } else if (glowIntensity === 'high') {
-      baseOpacity = 0.55;
-      baseWeight = 2.8;
-      glowWeight = 7.0;
-      glowOpacity = 0.30;
-    } else if (glowIntensity === 'blaze') {
       baseOpacity = 0.75;
-      baseWeight = 3.5;
+      baseWeight = 3.4;
       glowWeight = 9.0;
       glowOpacity = 0.45;
+    } else if (glowIntensity === 'blaze') {
+      baseOpacity = 0.90;
+      baseWeight = 4.2;
+      glowWeight = 11.5;
+      glowOpacity = 0.60;
     }
 
     // Render every route on canvas
@@ -226,6 +239,8 @@ export default function AllActivityHeatmap({ onSelectActivityForMap, initialSpor
 
       layerGroup.addLayer(mainLine);
     });
+
+    allBoundsRef.current = allBounds;
 
     // Auto fit all routes with smooth bounds
     if (allBounds.isValid()) {
@@ -381,6 +396,32 @@ export default function AllActivityHeatmap({ onSelectActivityForMap, initialSpor
           >
             <Key size={13} />
             <span>{cartoKey ? 'CARTO Key ✓' : 'CARTO Key'}</span>
+          </button>
+
+          <button
+            onClick={handleFocusSurat}
+            title="Zoom directly into main training cluster in Bajipura & Surat"
+            className="heatmap-carto-btn"
+            style={{
+              background: 'rgba(252, 82, 0, 0.15)',
+              borderColor: 'rgba(252, 82, 0, 0.35)',
+              color: 'var(--primary)'
+            }}
+          >
+            <span>📍 Focus Surat &amp; Bajipura</span>
+          </button>
+
+          <button
+            onClick={handleFitAll}
+            title="Fit all 348 routes across Gujarat"
+            className="heatmap-carto-btn"
+            style={{
+              background: 'rgba(0, 229, 255, 0.12)',
+              borderColor: 'rgba(0, 229, 255, 0.3)',
+              color: '#00E5FF'
+            }}
+          >
+            <span>🌐 Fit All Routes</span>
           </button>
         </div>
       </div>
