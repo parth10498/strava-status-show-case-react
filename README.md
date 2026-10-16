@@ -36,18 +36,7 @@ A state-of-the-art, **100% standalone React** application showcasing athletic pe
 - **Strava Wrapped Story**: An animated, slide-based annual story reviewing your biggest year accomplishments, top sport, longest workout, and total sweat time.
 - **Exportable Share Cards**: Generates high-resolution social media cards directly to HTML5 Canvas and downloads as PNG.
 
-### 7. 🤖 Visitor Action Tracking & Telegram Smart Alerts
-- **Real-Time Telegram Bot Notifications**: Integrated directly with `@strava_visit_detail_bot`.
-- **Smart High-Intent Action Triggers**:
-  - **Route Playback**: Notified when a visitor plays route animations on the Leaflet map (e.g., *"Visitor from Surat is inspecting your 21.1 km Half Marathon route!"*).
-  - **Season Wrapped**: Notified when a visitor opens the interactive Wrapped recap storyboard.
-  - **Route Download**: Notified when a visitor exports a GPX/TCX coordinate file.
-- **Interactive Inline Telegram Buttons**:
-  - `[📍 Open in Google Maps]`: One-tap pin on visitor's geolocation.
-  - `[🏃‍♂️ View Parth's Strava]`: Direct link to Parth's official Strava athletic profile.
-  - `[🔕 Mute for 2 hours]`: Instant interactive mute button with `/unmute` command support.
-
-### 8. 💾 Client-Side Data Storage & Analytics
+### 7. 💾 Client-Side Data Storage & Analytics
 - **Preloaded Data**: Bundled with 349 real activities for athlete Parth Chaudhari.
 - **Interactive Re-indexing**: Instant recalculation across date filters, years, and sport categories.
 - **Milestone Demonstration Mode**: Ability to load realistic demonstration milestones covering all run and cycling ladders.

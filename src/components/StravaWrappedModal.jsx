@@ -10,7 +10,6 @@ import {
 } from 'lucide-react';
 
 import { getWrappedSummary } from '../services/stravaDataService';
-import { trackVisitorAction } from '../services/visitorTrackingService';
 
 export default function StravaWrappedModal({ year = 2026, athlete, onClose }) {
   const [wrappedData, setWrappedData] = useState(null);
@@ -27,7 +26,6 @@ export default function StravaWrappedModal({ year = 2026, athlete, onClose }) {
 
   useEffect(() => {
     try {
-      trackVisitorAction('season_wrapped', { year: requestedYear });
       const data = getWrappedSummary(requestedYear);
       setWrappedData(data);
     } catch (err) {

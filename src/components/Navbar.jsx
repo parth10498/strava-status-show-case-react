@@ -1,6 +1,5 @@
 import React from 'react';
 import { RefreshCw, Zap, Award, Activity } from 'lucide-react';
-import { trackVisitorAction } from '../services/visitorTrackingService';
 
 export default function Navbar({ 
   athlete, 
@@ -31,10 +30,7 @@ export default function Navbar({
       <div className="nav-actions">
         {/* Season Wrapped Button */}
         <button
-          onClick={() => {
-            trackVisitorAction('season_wrapped', { year: 2026 });
-            onOpenWrapped();
-          }}
+          onClick={onOpenWrapped}
           className="btn btn-season-wrapped"
           style={{
             background: 'linear-gradient(135deg, rgba(252, 82, 0, 0.25), rgba(168, 85, 247, 0.25))',

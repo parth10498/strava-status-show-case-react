@@ -1,7 +1,6 @@
 import initialData from '../data/initialData.json';
 import { DEMO_ACTIVITIES, DEMO_ATHLETE } from '../data/demoActivities.js';
 import { decodePolyline } from '../utils/polyline.js';
-import { trackVisitorAction } from './visitorTrackingService.js';
 
 const STORAGE_KEY = 'strava_status_store_v1';
 const WEATHER_CACHE_KEY = 'strava_weather_cache_v1';
@@ -1303,9 +1302,6 @@ export function downloadActivityExport(activityId, format = 'gpx') {
     alert('Activity not found');
     return;
   }
-
-  // Trigger Smart Telegram Alert for Route Download
-  trackVisitorAction('download_gpx', { activity: act, format });
 
   const name = (act.name || 'Activity').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const sport = act.sport_type || act.type || 'Workout';

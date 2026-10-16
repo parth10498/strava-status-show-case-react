@@ -21,7 +21,6 @@ import ShareCardModal from './ShareCardModal';
 import CartoKeyModal from './CartoKeyModal';
 import { getElevationProfile, fetchActivityWeather, downloadActivityExport } from '../services/stravaDataService';
 import { getCartoApiKey, getBasemapProviders } from '../utils/mapTileService';
-import { trackVisitorAction } from '../services/visitorTrackingService';
 
 export default function RouteMapModal({ activity, athlete, onClose }) {
   const mapContainerRef = useRef(null);
@@ -706,13 +705,7 @@ export default function RouteMapModal({ activity, athlete, onClose }) {
               <div className="route-playback-controls-row">
                 {/* Play / Pause */}
                 <button
-                  onClick={() => {
-                    const willPlay = !isPlaying;
-                    setIsPlaying(willPlay);
-                    if (willPlay) {
-                      trackVisitorAction('route_playback', { activity });
-                    }
-                  }}
+                  onClick={() => setIsPlaying(!isPlaying)}
                   className="route-playback-play-btn"
                   style={{
                     background: isPlaying ? 'rgba(239, 68, 68, 0.2)' : `${themeColor}26`,

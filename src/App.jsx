@@ -20,7 +20,6 @@ import {
   calculateStats, 
   seedDemoData 
 } from './services/stravaDataService';
-import { initVisitorTracking } from './services/visitorTrackingService';
 import './App.css';
 
 export default function App() {
@@ -106,11 +105,6 @@ export default function App() {
   useEffect(() => {
     loadStatsWithFilter();
   }, [loadStatsWithFilter]);
-
-  // Initialize visitor tracking
-  useEffect(() => {
-    initVisitorTracking();
-  }, []);
 
   // Handle Sync / Refresh
   const handleSync = () => {
