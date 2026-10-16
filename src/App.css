@@ -1752,6 +1752,494 @@
   border: 1px solid var(--border-subtle);
 }
 
+/* Heatmap Component System */
+.heatmap-hud-grid {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.heatmap-control-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin: 18px 0;
+}
+
+.heatmap-control-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.heatmap-control-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  min-width: 90px;
+  flex-shrink: 0;
+}
+
+.heatmap-sport-grid {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.heatmap-sport-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.heatmap-sport-count {
+  font-size: 0.72rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.heatmap-theme-grid {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.heatmap-theme-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.heatmap-settings-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.heatmap-select-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.heatmap-select {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  padding: 6px 12px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  outline: none;
+}
+
+.heatmap-carto-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.heatmap-explanatory-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+  border: 1px solid;
+  font-size: 0.85rem;
+}
+
+.heatmap-map-legend {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 6px 12px;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+}
+
+.heatmap-route-inspector {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  max-width: 520px;
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  z-index: 999;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(252, 82, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.heatmap-inspector-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-inspect-route {
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.btn-dismiss-inspector {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.heatmap-shortcut-banner {
+  margin-bottom: 24px;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, rgba(252, 82, 0, 0.12) 0%, rgba(20, 26, 42, 0.9) 100%);
+  border: 1px solid rgba(252, 82, 0, 0.3);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Activities Toolbar & Actions */
+.activities-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.activities-search-box {
+  position: relative;
+  min-width: 200px;
+}
+
+.activities-search-input {
+  width: 100%;
+  padding: 8px 12px 8px 32px;
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.activities-sport-chips {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.activities-sport-chip-btn {
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.activities-sport-chip-btn.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.activities-per-page-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.activity-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-view-route {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(252, 82, 0, 0.15);
+  color: var(--primary);
+  border: 1px solid rgba(252, 82, 0, 0.35);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-view-route:hover {
+  background: rgba(252, 82, 0, 0.25);
+  border-color: var(--primary);
+}
+
+.btn-share-card-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(0, 229, 255, 0.12);
+  color: #00E5FF;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-share-card-trigger:hover {
+  background: rgba(0, 229, 255, 0.22);
+}
+
+.btn-gpx-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(16, 185, 129, 0.12);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-strava-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.no-gps-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+}
+
+/* Route Explorer */
+.route-explorer-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.route-explorer-search {
+  position: relative;
+  min-width: 220px;
+}
+
+.route-explorer-search-input {
+  width: 100%;
+  padding: 8px 12px 8px 32px;
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.route-explorer-sport-chips {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Trophy Cabinet Filters */
+.trophy-filters-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.trophy-category-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.trophy-cat-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.trophy-cat-count {
+  font-size: 0.72rem;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.trophy-status-toggle {
+  display: flex;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  gap: 2px;
+}
+
+/* Playback & Modals */
+.route-playback-hud {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  background: rgba(15, 23, 42, 0.85);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.route-playback-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  background: rgba(15, 23, 42, 0.95);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.route-elevation-card {
+  padding: 14px 18px;
+  background: rgba(15, 23, 42, 0.6);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.share-card-modal-content {
+  width: 900px;
+  max-width: 95vw;
+  max-height: 92vh;
+}
+
+/* Grids in Tab Screens */
+.gear-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.pr-trophies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.eddington-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.consistency-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.consistency-rings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
 /* Touch devices: remove hover jitter */
 @media (hover: none) and (pointer: coarse) {
   .glass-card:hover {
@@ -2018,8 +2506,155 @@
     margin-bottom: 20px;
   }
 
+  .section-title-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
   .section-title {
     font-size: 1.15rem;
+  }
+
+  /* Heatmap Component System */
+  .heatmap-hud-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .hud-metric-pill {
+    padding: 6px 8px !important;
+    text-align: center;
+  }
+
+  .hud-metric-pill span {
+    font-size: 0.68rem !important;
+  }
+
+  .hud-metric-pill strong {
+    font-size: 0.98rem !important;
+  }
+
+  .heatmap-control-panel {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .heatmap-control-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .heatmap-control-label {
+    min-width: auto;
+    font-size: 0.75rem;
+  }
+
+  .heatmap-sport-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    width: 100%;
+  }
+
+  .heatmap-sport-btn {
+    width: 100%;
+    justify-content: space-between;
+    padding: 7px 10px;
+    font-size: 0.8rem;
+  }
+
+  .heatmap-theme-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    width: 100%;
+  }
+
+  .heatmap-theme-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 7px 8px;
+    font-size: 0.78rem;
+    text-align: center;
+  }
+
+  .heatmap-settings-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .heatmap-select-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .heatmap-select {
+    width: 100%;
+  }
+
+  .heatmap-carto-btn {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .heatmap-explanatory-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .heatmap-shortcut-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .heatmap-shortcut-banner .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .heatmap-map-legend {
+    top: 8px;
+    right: 8px;
+    left: 8px;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    justify-content: center;
+  }
+
+  .heatmap-route-inspector {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    padding: 12px 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    max-width: none;
+  }
+
+  .heatmap-inspector-actions {
+    width: 100%;
+  }
+
+  .heatmap-inspector-actions .btn {
+    width: 100%;
+    justify-content: center;
   }
 
   /* Milestones Grid */
@@ -2042,6 +2677,30 @@
   }
 
   /* Activities Feed */
+  .activities-toolbar {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .activities-search-box {
+    width: 100%;
+  }
+
+  .activities-sport-chips {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+
+  .activities-sport-chip-btn {
+    padding: 6px 4px;
+    text-align: center;
+    font-size: 0.72rem;
+  }
+
   .activity-item {
     flex-direction: column;
     align-items: stretch;
@@ -2058,10 +2717,32 @@
   .activity-stats-row {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     align-items: flex-start;
     justify-content: space-between;
+  }
+
+  .activity-actions-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    width: 100%;
+    margin-top: 8px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .activity-actions-row .btn,
+  .activity-actions-row .no-gps-badge {
+    width: 100%;
+    justify-content: center;
+    padding: 8px 6px;
+    font-size: 0.75rem;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .act-stat {
@@ -2082,10 +2763,83 @@
     gap: 12px;
   }
 
-  /* Route Explorer Cards */
+  /* Route Explorer */
+  .route-explorer-toolbar {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .route-explorer-search {
+    width: 100%;
+  }
+
+  .route-explorer-sport-chips {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+
+  .route-explorer-sport-chips .activities-sport-chip-btn {
+    padding: 6px 4px;
+    text-align: center;
+  }
+
   .routes-cards-grid {
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+
+  /* Trophy Cabinet Filters */
+  .trophy-filters-wrap {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .trophy-category-pills {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 6px;
+    padding-bottom: 4px;
+    width: 100%;
+  }
+
+  .trophy-category-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .trophy-cat-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .trophy-status-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .trophy-status-toggle button {
+    flex: 1;
+    text-align: center;
+  }
+
+  /* Route Modal Playback Toolbar */
+  .route-playback-hud {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .route-playback-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
   }
 
   /* Heatmap */
@@ -2352,9 +3106,59 @@
     gap: 8px;
   }
 
-  /* Heatmap Canvas */
+  /* Heatmap */
   .heatmap-canvas-container {
     height: 360px;
+  }
+
+  .heatmap-hud-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .hud-metric-pill {
+    padding: 5px 6px !important;
+  }
+
+  .hud-metric-pill span {
+    font-size: 0.62rem !important;
+  }
+
+  .hud-metric-pill strong {
+    font-size: 0.92rem !important;
+  }
+
+  .heatmap-map-legend {
+    flex-direction: column;
+    gap: 2px;
+    font-size: 0.65rem;
+  }
+
+  .heatmap-sport-btn {
+    padding: 6px 8px;
+    font-size: 0.75rem;
+  }
+
+  .heatmap-theme-btn {
+    padding: 6px 6px;
+    font-size: 0.72rem;
+  }
+
+  /* Activities */
+  .activity-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .activity-actions-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .activity-actions-row .btn,
+  .activity-actions-row .no-gps-badge {
+    padding: 7px 4px;
+    font-size: 0.72rem;
   }
 
   /* Modals */
@@ -2456,5 +3260,21 @@
   .route-stats-strip {
     grid-template-columns: 1fr 1fr;
     gap: 6px;
+  }
+
+  .heatmap-hud-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .heatmap-sport-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .heatmap-theme-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-actions-row {
+    grid-template-columns: 1fr;
   }
 }

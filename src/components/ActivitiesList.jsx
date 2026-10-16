@@ -122,30 +122,21 @@ export default function ActivitiesList({
         </h3>
         
         {/* Filters and Search Bar */}
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+        <div className="activities-toolbar">
           {/* Search */}
-          <div style={{ position: 'relative' }}>
+          <div className="activities-search-box" style={{ position: 'relative' }}>
             <input 
               type="text" 
               placeholder="Search by workout name..." 
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              style={{
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid var(--border-subtle)',
-                borderRadius: 'var(--radius-md)',
-                padding: '7px 12px 7px 32px',
-                color: 'white',
-                fontSize: '0.85rem',
-                outline: 'none',
-                minWidth: '200px'
-              }}
+              className="activities-search-input"
             />
             <Search size={14} style={{ position: 'absolute', left: '10px', top: '10px', color: 'var(--text-muted)' }} />
           </div>
 
           {/* Sport Filters */}
-          <div style={{ display: 'flex', gap: '6px' }}>
+          <div className="activities-sport-chips">
             {[
               { id: 'all', label: 'ALL' },
               { id: 'run', label: '🏃 RUN' },
@@ -155,18 +146,7 @@ export default function ActivitiesList({
               <button
                 key={tab.id}
                 onClick={() => handleSportChange(tab.id)}
-                style={{
-                  padding: '6px 14px',
-                  borderRadius: 'var(--radius-full)',
-                  border: '1px solid',
-                  borderColor: sport === tab.id ? 'var(--primary)' : 'var(--border-subtle)',
-                  background: sport === tab.id ? 'rgba(252, 82, 0, 0.15)' : 'transparent',
-                  color: sport === tab.id ? 'white' : 'var(--text-muted)',
-                  fontSize: '0.8rem',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease'
-                }}
+                className={`activities-sport-chip-btn ${sport === tab.id ? 'active' : ''}`}
               >
                 {tab.label}
               </button>
@@ -188,7 +168,7 @@ export default function ActivitiesList({
           </button>
 
           {/* Items Per Page Selector */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <div className="activities-per-page-wrap">
             <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Show:</span>
             <select 
               value={perPage} 
@@ -247,6 +227,7 @@ export default function ActivitiesList({
                   </div>
                 </div>
 
+                {/* Metrics row */}
                 <div className="activity-stats-row">
                   <div className="act-stat">
                     <span className="act-stat-label">Distance</span>
@@ -273,7 +254,10 @@ export default function ActivitiesList({
                       <span className="act-stat-val">+{Math.round(act.total_elevation_gain)}m</span>
                     </div>
                   )}
+                </div>
 
+                {/* Dedicated Action Buttons row */}
+                <div className="activity-actions-row">
                   {/* Open Leaflet Map Route Button */}
                   {hasRoute ? (
                     <button
@@ -319,7 +303,7 @@ export default function ActivitiesList({
                     href={`https://www.strava.com/activities/${act.id}`} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="btn btn-secondary"
+                    className="btn btn-secondary btn-strava-link"
                     style={{ padding: '6px 12px', fontSize: '0.78rem' }}
                     title="View on Strava"
                   >

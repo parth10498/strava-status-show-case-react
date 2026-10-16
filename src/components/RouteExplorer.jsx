@@ -67,30 +67,21 @@ export default function RouteExplorer({ onSelectActivityForMap, externalFilter =
           </p>
         </div>
 
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+        <div className="route-explorer-toolbar">
           {/* Search input */}
-          <div style={{ position: 'relative' }}>
+          <div className="route-explorer-search" style={{ position: 'relative' }}>
             <input 
               type="text" 
               placeholder="Search route by name..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              style={{
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid var(--border-subtle)',
-                borderRadius: 'var(--radius-md)',
-                padding: '7px 12px 7px 32px',
-                color: 'white',
-                fontSize: '0.85rem',
-                outline: 'none',
-                minWidth: '200px'
-              }}
+              className="route-explorer-search-input"
             />
             <Search size={14} style={{ position: 'absolute', left: '10px', top: '10px', color: 'var(--text-muted)' }} />
           </div>
 
           {/* Sport pills */}
-          <div style={{ display: 'flex', gap: '6px' }}>
+          <div className="route-explorer-sport-chips">
             {[
               { id: 'all', label: 'ALL ROUTES' },
               { id: 'run', label: '🏃 RUNS' },

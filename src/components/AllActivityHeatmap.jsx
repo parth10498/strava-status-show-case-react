@@ -258,7 +258,7 @@ export default function AllActivityHeatmap({ onSelectActivityForMap, initialSpor
         </div>
 
         {/* HUD Counters */}
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+        <div className="heatmap-hud-grid">
           <div className="hud-metric-pill" style={{ background: 'rgba(252, 82, 0, 0.12)', border: '1px solid rgba(252, 82, 0, 0.3)', padding: '6px 14px', borderRadius: '12px' }}>
             <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block', textTransform: 'uppercase' }}>Routes Mapped</span>
             <strong style={{ fontSize: '1.15rem', color: 'var(--primary)', fontFamily: 'var(--font-display)' }}>{routes.length}</strong>
@@ -277,150 +277,106 @@ export default function AllActivityHeatmap({ onSelectActivityForMap, initialSpor
       </div>
 
       {/* Control Toolbars */}
-      <div style={{
-        display: 'flex',
-        gap: '12px',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flexWrap: 'wrap',
-        margin: '16px 0',
-        padding: '12px 16px',
-        background: 'rgba(0, 0, 0, 0.3)',
-        borderRadius: 'var(--radius-md)',
-        border: '1px solid var(--border-subtle)'
-      }}>
+      <div className="heatmap-control-panel">
         {/* Sport Filter Buttons */}
-        <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)', marginRight: '2px', fontWeight: 600 }}>Sport View:</span>
-          {[
-            { id: 'all', label: '🌐 All Activities', count: counts.all, color: 'var(--primary)', desc: 'All 348 GPS tracks in one' },
-            { id: 'run', label: '🏃 Runs Only', count: counts.run, color: 'var(--accent-run)', desc: '146 Running routes only' },
-            { id: 'ride', label: '🚴 Rides Only', count: counts.ride, color: 'var(--accent-ride)', desc: '91 Cycling routes only' },
-            { id: 'other', label: '🥾 Hikes & Walks', count: counts.other, color: '#38BDF8', desc: '111 Trails, walks & secondary sports' }
-          ].map(tab => {
-            const isSelected = sportFilter === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => handleSportSelect(tab.id)}
-                title={tab.desc}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '6px 14px',
-                  borderRadius: '999px',
-                  border: '1px solid',
-                  borderColor: isSelected ? tab.color : 'rgba(255, 255, 255, 0.12)',
-                  background: isSelected ? `${tab.color}24` : 'rgba(255, 255, 255, 0.03)',
-                  color: isSelected ? 'white' : 'var(--text-muted)',
-                  fontSize: '0.82rem',
-                  fontWeight: isSelected ? 700 : 500,
-                  cursor: 'pointer',
-                  transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
-                  boxShadow: isSelected ? `0 0 16px ${tab.color}33` : 'none'
-                }}
-              >
-                <span>{tab.label}</span>
-                <span style={{
-                  background: isSelected ? tab.color : 'rgba(255, 255, 255, 0.1)',
-                  color: isSelected ? '#000' : 'var(--text-dim)',
-                  fontSize: '0.72rem',
-                  fontWeight: 800,
-                  padding: '2px 7px',
-                  borderRadius: '10px'
-                }}>
-                  {tab.count}
-                </span>
-              </button>
-            );
-          })}
+        <div className="heatmap-control-section">
+          <span className="heatmap-control-label">Sport View:</span>
+          <div className="heatmap-sport-grid">
+            {[
+              { id: 'all', label: '🌐 All', count: counts.all, color: 'var(--primary)', desc: 'All 348 GPS tracks in one' },
+              { id: 'run', label: '🏃 Runs', count: counts.run, color: 'var(--accent-run)', desc: '146 Running routes only' },
+              { id: 'ride', label: '🚴 Rides', count: counts.ride, color: 'var(--accent-ride)', desc: '91 Cycling routes only' },
+              { id: 'other', label: '🥾 Hikes', count: counts.other, color: '#38BDF8', desc: '111 Trails, walks & secondary sports' }
+            ].map(tab => {
+              const isSelected = sportFilter === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => handleSportSelect(tab.id)}
+                  title={tab.desc}
+                  className="heatmap-sport-btn"
+                  style={{
+                    borderColor: isSelected ? tab.color : 'rgba(255, 255, 255, 0.12)',
+                    background: isSelected ? `${tab.color}24` : 'rgba(255, 255, 255, 0.03)',
+                    color: isSelected ? 'white' : 'var(--text-muted)',
+                    boxShadow: isSelected ? `0 0 16px ${tab.color}33` : 'none'
+                  }}
+                >
+                  <span className="heatmap-sport-label">{tab.label}</span>
+                  <span 
+                    className="heatmap-sport-count"
+                    style={{
+                      background: isSelected ? tab.color : 'rgba(255, 255, 255, 0.1)',
+                      color: isSelected ? '#000' : 'var(--text-dim)'
+                    }}
+                  >
+                    {tab.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Theme Picker */}
-        <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)', marginRight: '4px' }}>Heat Color:</span>
-          {Object.entries(HEATMAP_THEMES).map(([key, t]) => (
-            <button
-              key={key}
-              onClick={() => setThemeKey(key)}
-              title={t.description}
-              style={{
-                padding: '6px 12px',
-                borderRadius: '8px',
-                border: '1px solid',
-                borderColor: themeKey === key ? t.primaryColor : 'rgba(255, 255, 255, 0.08)',
-                background: themeKey === key ? `${t.primaryColor}26` : 'transparent',
-                color: themeKey === key ? 'white' : 'var(--text-muted)',
-                fontSize: '0.8rem',
-                fontWeight: 600,
-                cursor: 'pointer',
-                transition: 'all 0.2s ease'
-              }}
-            >
-              {t.name}
-            </button>
-          ))}
+        <div className="heatmap-control-section">
+          <span className="heatmap-control-label">Heat Color:</span>
+          <div className="heatmap-theme-grid">
+            {Object.entries(HEATMAP_THEMES).map(([key, t]) => (
+              <button
+                key={key}
+                onClick={() => setThemeKey(key)}
+                title={t.description}
+                className="heatmap-theme-btn"
+                style={{
+                  borderColor: themeKey === key ? t.primaryColor : 'rgba(255, 255, 255, 0.08)',
+                  background: themeKey === key ? `${t.primaryColor}26` : 'transparent',
+                  color: themeKey === key ? 'white' : 'var(--text-muted)'
+                }}
+              >
+                {t.name}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Glow Intensity & Basemap Style */}
-        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>Glow:</span>
-          <select
-            value={glowIntensity}
-            onChange={(e) => setGlowIntensity(e.target.value)}
-            style={{
-              background: '#0F172A',
-              border: '1px solid var(--border-subtle)',
-              color: 'white',
-              padding: '6px 10px',
-              borderRadius: '6px',
-              fontSize: '0.8rem',
-              outline: 'none',
-              cursor: 'pointer'
-            }}
-          >
-            <option value="subtle">Subtle</option>
-            <option value="normal">Normal</option>
-            <option value="high">High Glow</option>
-            <option value="blaze">🔥 Ultra Blaze</option>
-          </select>
+        <div className="heatmap-control-section heatmap-settings-row">
+          <div className="heatmap-select-item">
+            <span className="heatmap-control-label">Glow:</span>
+            <select
+              value={glowIntensity}
+              onChange={(e) => setGlowIntensity(e.target.value)}
+              className="heatmap-select"
+            >
+              <option value="subtle">Subtle</option>
+              <option value="normal">Normal</option>
+              <option value="high">High Glow</option>
+              <option value="blaze">🔥 Ultra Blaze</option>
+            </select>
+          </div>
 
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)', marginLeft: '6px' }}>Map:</span>
-          <select
-            value={basemapKey}
-            onChange={(e) => setBasemapKey(e.target.value)}
-            style={{
-              background: '#0F172A',
-              border: '1px solid var(--border-subtle)',
-              color: 'white',
-              padding: '6px 10px',
-              borderRadius: '6px',
-              fontSize: '0.8rem',
-              outline: 'none',
-              cursor: 'pointer'
-            }}
-          >
-            {Object.entries(basemapProviders).map(([k, s]) => (
-              <option key={k} value={k}>{s.name}</option>
-            ))}
-          </select>
+          <div className="heatmap-select-item">
+            <span className="heatmap-control-label">Map:</span>
+            <select
+              value={basemapKey}
+              onChange={(e) => setBasemapKey(e.target.value)}
+              className="heatmap-select"
+            >
+              {Object.entries(basemapProviders).map(([k, s]) => (
+                <option key={k} value={k}>{s.name}</option>
+              ))}
+            </select>
+          </div>
 
           <button
             onClick={() => setShowKeyModal(true)}
             title="Configure CARTO API Key to remove watermarks"
+            className="heatmap-carto-btn"
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '4px',
               background: cartoKey ? 'rgba(16, 185, 129, 0.15)' : 'rgba(252, 82, 0, 0.15)',
-              border: `1px solid ${cartoKey ? 'rgba(16, 185, 129, 0.35)' : 'rgba(252, 82, 0, 0.35)'}`,
-              color: cartoKey ? '#10B981' : 'var(--primary)',
-              borderRadius: '6px',
-              padding: '6px 10px',
-              fontSize: '0.78rem',
-              fontWeight: 600,
-              cursor: 'pointer'
+              borderColor: cartoKey ? 'rgba(16, 185, 129, 0.35)' : 'rgba(252, 82, 0, 0.35)',
+              color: cartoKey ? '#10B981' : 'var(--primary)'
             }}
           >
             <Key size={13} />
@@ -430,17 +386,13 @@ export default function AllActivityHeatmap({ onSelectActivityForMap, initialSpor
       </div>
  
       {/* Current View Explanatory Strip */}
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '10px 16px',
-        margin: '0 0 14px 0',
-        background: sportFilter === 'all' ? 'rgba(252, 82, 0, 0.08)' : 'rgba(15, 23, 42, 0.6)',
-        border: `1px solid ${sportFilter === 'all' ? 'rgba(252, 82, 0, 0.3)' : 'var(--border-subtle)'}`,
-        borderRadius: 'var(--radius-sm)',
-        fontSize: '0.85rem'
-      }}>
+      <div 
+        className="heatmap-explanatory-strip"
+        style={{
+          background: sportFilter === 'all' ? 'rgba(252, 82, 0, 0.08)' : 'rgba(15, 23, 42, 0.6)',
+          borderColor: sportFilter === 'all' ? 'rgba(252, 82, 0, 0.3)' : 'var(--border-subtle)'
+        }}
+      >
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <span style={{ fontSize: '1.25rem' }}>
             {sportFilter === 'all' ? '🌐' : sportFilter === 'run' ? '🏃' : sportFilter === 'ride' ? '🚴' : '🥾'}
@@ -464,9 +416,9 @@ export default function AllActivityHeatmap({ onSelectActivityForMap, initialSpor
         {sportFilter !== 'all' && (
           <button
             onClick={() => handleSportSelect('all')}
-            className="btn"
+            className="btn btn-switch-all"
             style={{
-              padding: '5px 12px',
+              padding: '6px 12px',
               fontSize: '0.78rem',
               background: 'rgba(252, 82, 0, 0.15)',
               color: 'var(--primary)',
@@ -508,25 +460,7 @@ export default function AllActivityHeatmap({ onSelectActivityForMap, initialSpor
 
         {/* Floating Route Detail Inspector Drawer */}
         {selectedRoute && (
-          <div style={{
-            position: 'absolute',
-            bottom: '24px',
-            left: '24px',
-            right: '24px',
-            maxWidth: '520px',
-            background: 'rgba(15, 23, 42, 0.94)',
-            backdropFilter: 'blur(16px)',
-            border: '1px solid var(--primary)',
-            borderRadius: 'var(--radius-md)',
-            padding: '16px 20px',
-            zIndex: 999,
-            boxShadow: '0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(252, 82, 0, 0.25)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '16px',
-            animation: 'fadeIn 0.2s ease-out'
-          }}>
+          <div className="heatmap-route-inspector">
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
                 <span style={{
@@ -554,27 +488,19 @@ export default function AllActivityHeatmap({ onSelectActivityForMap, initialSpor
               </div>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div className="heatmap-inspector-actions">
               <button
                 onClick={() => {
                   if (onSelectActivityForMap) onSelectActivityForMap(selectedRoute);
                 }}
-                className="btn btn-primary"
-                style={{ padding: '8px 14px', fontSize: '0.85rem', whiteSpace: 'nowrap' }}
+                className="btn btn-primary btn-inspect-route"
               >
                 <span>Inspect Elevation &amp; Playback</span>
                 <ExternalLink size={14} />
               </button>
               <button
                 onClick={() => setSelectedRoute(null)}
-                style={{
-                  background: 'transparent',
-                  border: 'none',
-                  color: 'var(--text-dim)',
-                  fontSize: '0.8rem',
-                  cursor: 'pointer',
-                  textAlign: 'center'
-                }}
+                className="btn-dismiss-inspector"
               >
                 Dismiss
               </button>
@@ -583,24 +509,8 @@ export default function AllActivityHeatmap({ onSelectActivityForMap, initialSpor
         )}
 
         {/* Legend Overlay at top right of map */}
-        <div style={{
-          position: 'absolute',
-          top: '16px',
-          right: '16px',
-          background: 'rgba(15, 23, 42, 0.85)',
-          backdropFilter: 'blur(10px)',
-          border: '1px solid var(--border-subtle)',
-          borderRadius: '10px',
-          padding: '8px 14px',
-          zIndex: 500,
-          display: 'flex',
-          alignItems: 'center',
-          gap: '10px',
-          fontSize: '0.75rem',
-          color: 'var(--text-muted)',
-          boxShadow: '0 4px 14px rgba(0,0,0,0.4)'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+        <div className="heatmap-map-legend">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
             <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: HEATMAP_THEMES[themeKey].primaryColor }}></div>
             <span>High Frequency Trait (Hot)</span>
           </div>

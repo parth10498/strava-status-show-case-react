@@ -25,16 +25,11 @@ export default function OtherSportsSection({ otherSports, allSportsBreakdown, on
       {onViewHeatmap && (
         <div 
           onClick={onViewHeatmap}
-          className="glass-card" 
+          className="glass-card heatmap-shortcut-banner" 
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '16px 22px',
             marginBottom: '24px',
             background: 'linear-gradient(90deg, rgba(56, 189, 248, 0.15) 0%, rgba(14, 165, 233, 0.08) 100%)',
             border: '1px solid rgba(56, 189, 248, 0.35)',
-            borderRadius: 'var(--radius-md)',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
             boxShadow: '0 4px 20px rgba(56, 189, 248, 0.1)'

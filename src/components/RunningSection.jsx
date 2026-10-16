@@ -56,7 +56,7 @@ export default function RunningSection({ running, onViewHeatmap, onSelectActivit
       {onViewHeatmap && (
         <div 
           onClick={onViewHeatmap}
-          className="glass-card" 
+          className="glass-card heatmap-shortcut-banner" 
           style={{
             display: 'flex',
             alignItems: 'center',

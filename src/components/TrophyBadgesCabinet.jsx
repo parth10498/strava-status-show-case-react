@@ -224,39 +224,18 @@ export default function TrophyBadgesCabinet({ onSelectActivityForMap }) {
 
       {/* Filters Strip */}
       <div className="section-card glass-card" style={{ padding: '16px 20px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+        <div className="trophy-filters-wrap">
           {/* Category Tabs */}
-          <div style={{ display: 'flex', gap: '6px', overflowX: 'auto', paddingBottom: '4px', maxWidth: '100%' }}>
+          <div className="trophy-category-pills">
             {categories.map(cat => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className="btn"
-                style={{
-                  padding: '7px 12px',
-                  borderRadius: '10px',
-                  fontSize: '0.82rem',
-                  fontWeight: selectedCategory === cat.id ? 700 : 500,
-                  background: selectedCategory === cat.id ? 'var(--primary)' : 'rgba(255, 255, 255, 0.05)',
-                  color: selectedCategory === cat.id ? 'white' : 'var(--text-secondary)',
-                  border: selectedCategory === cat.id ? '1px solid var(--primary)' : '1px solid var(--border-subtle)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  cursor: 'pointer',
-                  whiteSpace: 'nowrap',
-                  transition: 'all 0.15s ease'
-                }}
+                className={`trophy-cat-btn ${selectedCategory === cat.id ? 'active' : ''}`}
               >
                 <span>{cat.icon}</span>
                 <span>{cat.label}</span>
-                <span style={{ 
-                  fontSize: '0.7rem', 
-                  opacity: 0.7, 
-                  background: 'rgba(0,0,0,0.2)', 
-                  padding: '1px 5px', 
-                  borderRadius: '6px' 
-                }}>
+                <span className="trophy-cat-count">
                   {cat.count}
                 </span>
               </button>
@@ -264,13 +243,7 @@ export default function TrophyBadgesCabinet({ onSelectActivityForMap }) {
           </div>
 
           {/* Unlocked / Locked Segmented Control */}
-          <div style={{
-            display: 'flex',
-            background: 'rgba(0,0,0,0.3)',
-            borderRadius: '10px',
-            padding: '3px',
-            border: '1px solid var(--border-subtle)'
-          }}>
+          <div className="trophy-status-toggle">
             <button
               onClick={() => setStatusFilter('all')}
               style={{

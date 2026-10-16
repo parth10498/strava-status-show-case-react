@@ -363,16 +363,7 @@ export default function ShareCardModal({ activity, athlete, weather, onClose }) 
         {/* Studio Body */}
         <div className="share-card-studio-body">
           {/* Card Canvas Preview Viewport */}
-          <div className="share-card-canvas-viewport" style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'rgba(0,0,0,0.4)',
-            borderRadius: 'var(--radius-md)',
-            padding: '20px',
-            minHeight: '480px',
-            border: '1px solid var(--border-subtle)'
-          }}>
+          <div className="share-card-canvas-viewport">
             <canvas 
               ref={canvasRef} 
               style={{

@@ -657,7 +657,7 @@ export default function RouteMapModal({ activity, athlete, onClose }) {
 
             {/* Live Playback Animated HUD Badge on Map */}
             {playbackProgress > 0 && (
-              <div style={{
+              <div className="route-playback-hud" style={{
                 position: 'absolute',
                 top: '20px',
                 left: '20px',
@@ -702,7 +702,7 @@ export default function RouteMapModal({ activity, athlete, onClose }) {
 
           {/* Animated Route Playback Toolbar */}
           {coordinates.length > 0 && (
-            <div style={{
+            <div className="route-playback-toolbar" style={{
               padding: '10px 20px',
               background: 'rgba(0, 0, 0, 0.35)',
               borderTop: '1px solid var(--border-subtle)',
@@ -805,7 +805,7 @@ export default function RouteMapModal({ activity, athlete, onClose }) {
 
           {/* Interactive Elevation Profile Graph */}
           {elevationSvgPath && (
-            <div style={{
+            <div className="route-elevation-card" style={{
               padding: '12px 20px',
               background: 'rgba(10, 15, 26, 0.6)',
               borderBottom: '1px solid var(--border-subtle)',
