@@ -147,10 +147,10 @@ export default function TrainingConsistency() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
       {/* 1. Streaks & Consistency Highlights Banner */}
-      <div style={{
+      <div className="consistency-stats-grid" style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-        gap: '16px'
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gap: '14px'
       }}>
         {/* Current Streak */}
         <div className="glass-card" style={{
@@ -431,10 +431,10 @@ export default function TrainingConsistency() {
       </div>
 
       {/* 3. Goal Rings & Patterns Grid */}
-      <div style={{
+      <div className="consistency-rings-grid" style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-        gap: '24px'
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: '20px'
       }}>
         {/* Apple Fitness Style Goal Rings */}
         <div className="section-card glass-card">

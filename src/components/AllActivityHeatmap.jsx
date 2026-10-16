@@ -483,7 +483,7 @@ export default function AllActivityHeatmap({ onSelectActivityForMap, initialSpor
       </div>
 
       {/* Map Canvas */}
-      <div style={{ position: 'relative', width: '100%', height: '580px', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+      <div className="heatmap-canvas-container" style={{ position: 'relative', width: '100%', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
         {loading && (
           <div style={{
             position: 'absolute',

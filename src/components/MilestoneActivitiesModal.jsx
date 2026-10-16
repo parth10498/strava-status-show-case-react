@@ -75,7 +75,7 @@ export default function MilestoneActivitiesModal({
   return (
     <div className="modal-backdrop" onClick={onClose} style={{ zIndex: 1100 }}>
       <div 
-        className="glass-card"
+        className="glass-card milestone-modal-content"
         onClick={(e) => e.stopPropagation()}
         style={{
           width: '92%',
@@ -93,7 +93,7 @@ export default function MilestoneActivitiesModal({
         }}
       >
         {/* Modal Header */}
-        <div style={{
+        <div className="milestone-modal-header" style={{
           padding: '20px 24px',
           borderBottom: '1px solid var(--border-subtle)',
           display: 'flex',
@@ -101,7 +101,7 @@ export default function MilestoneActivitiesModal({
           justifyContent: 'space-between',
           background: 'rgba(18, 24, 38, 0.8)'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <div className="milestone-modal-header-info" style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
             <div style={{
               width: '46px',
               height: '46px',
@@ -195,7 +195,7 @@ export default function MilestoneActivitiesModal({
         </div>
 
         {/* Search & Sort Bar */}
-        <div style={{
+        <div className="milestone-search-bar" style={{
           display: 'flex',
           gap: '10px',
           alignItems: 'center',
@@ -288,7 +288,7 @@ export default function MilestoneActivitiesModal({
               return (
                 <div 
                   key={act.id}
-                  className="glass-card"
+                  className="glass-card milestone-activity-card"
                   style={{
                     padding: '14px 18px',
                     display: 'flex',
@@ -349,7 +349,7 @@ export default function MilestoneActivitiesModal({
                   </div>
 
                   {/* Middle: Metrics Pills */}
-                  <div style={{
+                  <div className="milestone-activity-metrics" style={{
                     display: 'flex',
                     alignItems: 'center',
                     gap: '16px',
@@ -380,7 +380,7 @@ export default function MilestoneActivitiesModal({
                   </div>
 
                   {/* Right: Actions */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div className="milestone-activity-actions" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     {hasPoly && onSelectActivityForMap && (
                       <button
                         onClick={() => onSelectActivityForMap(act)}

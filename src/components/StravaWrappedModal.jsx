@@ -150,7 +150,7 @@ export default function StravaWrappedModal({ year = 2026, athlete, onClose }) {
 
       {/* Main Wrapped Phone/Card Container */}
       <div 
-        className="glass-card" 
+        className="glass-card wrapped-phone-container" 
         onClick={(e) => e.stopPropagation()}
         style={{
           width: '92%',
@@ -226,7 +226,7 @@ export default function StravaWrappedModal({ year = 2026, athlete, onClose }) {
         </div>
 
         {/* Slide Viewport */}
-        <div style={{
+        <div className="wrapped-slide-viewport" style={{
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
@@ -235,6 +235,7 @@ export default function StravaWrappedModal({ year = 2026, athlete, onClose }) {
           textAlign: 'center',
           padding: '30px',
           position: 'relative',
+          overflowY: 'auto',
           zIndex: 15
         }}>
           {/* SLIDE 0: Annual Intro */}

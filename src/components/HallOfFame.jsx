@@ -222,10 +222,10 @@ export default function HallOfFame({ onSelectActivityForMap }) {
           </div>
 
           {/* Trophies Grid */}
-          <div style={{
+          <div className="pr-trophies-grid" style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))',
-            gap: '18px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: '16px',
             marginTop: '16px'
           }}>
             {trophies.map(trophy => {
@@ -377,10 +377,10 @@ export default function HallOfFame({ onSelectActivityForMap }) {
           </div>
         </div>
 
-        <div style={{
+        <div className="eddington-cards-grid" style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-          gap: '20px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))',
+          gap: '16px',
           marginTop: '16px'
         }}>
           {/* Cycling Eddington Card */}

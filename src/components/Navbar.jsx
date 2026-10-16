@@ -35,7 +35,7 @@ export default function Navbar({
             trackVisitorAction('season_wrapped', { year: 2026 });
             onOpenWrapped();
           }}
-          className="btn"
+          className="btn btn-season-wrapped"
           style={{
             background: 'linear-gradient(135deg, rgba(252, 82, 0, 0.25), rgba(168, 85, 247, 0.25))',
             border: '1px solid rgba(252, 82, 0, 0.5)',

@@ -325,7 +325,7 @@ export default function ShareCardModal({ activity, athlete, weather, onClose }) 
   return (
     <div className="modal-backdrop" onClick={onClose} style={{ zIndex: 1200 }}>
       <div 
-        className="glass-card" 
+        className="glass-card share-card-modal-content" 
         onClick={(e) => e.stopPropagation()}
         style={{
           width: '94%',
@@ -339,7 +339,7 @@ export default function ShareCardModal({ activity, athlete, weather, onClose }) 
         }}
       >
         {/* Header */}
-        <div style={{
+        <div className="share-card-header" style={{
           padding: '18px 24px',
           borderBottom: '1px solid var(--border-subtle)',
           display: 'flex',
@@ -361,16 +361,9 @@ export default function ShareCardModal({ activity, athlete, weather, onClose }) 
         </div>
 
         {/* Studio Body */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 320px',
-          gap: '24px',
-          padding: '24px',
-          overflowY: 'auto',
-          alignItems: 'start'
-        }}>
+        <div className="share-card-studio-body">
           {/* Card Canvas Preview Viewport */}
-          <div style={{
+          <div className="share-card-canvas-viewport" style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',

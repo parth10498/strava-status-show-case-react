@@ -174,10 +174,10 @@ export default function GearManager() {
             <p>No gear registered in this category yet. Click "Add Shoe or Bike" above to start tracking mileage!</p>
           </div>
         ) : (
-          <div style={{
+          <div className="gear-cards-grid" style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-            gap: '20px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))',
+            gap: '16px',
             marginTop: '20px'
           }}>
             {filteredGear.map(item => {

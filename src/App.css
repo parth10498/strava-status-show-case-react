@@ -713,31 +713,6 @@
   color: var(--text-main);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  .nav-actions {
-    width: 100%;
-    justify-content: space-between;
-  }
-  .activity-stats-row {
-    align-items: flex-start;
-    width: 100%;
-    justify-content: space-between;
-  }
-  .act-stat {
-    align-items: flex-start;
-  }
-  .pagination-bar {
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-  }
-}
 
 /* ==========================================================================
    DATE & PERIOD FILTER BAR
@@ -1746,5 +1721,740 @@
   border: 1px solid currentColor;
 }
 
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM (ALL SIZES OF MOBILE & TABLET)
+   ========================================================================== */
 
+/* Base component wrappers */
+.heatmap-canvas-container {
+  height: 560px;
+  width: 100%;
+  position: relative;
+}
 
+.share-card-studio-body {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  padding: 24px;
+  overflow-y: auto;
+  align-items: start;
+}
+
+.share-card-canvas-viewport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  min-height: 480px;
+  border: 1px solid var(--border-subtle);
+}
+
+/* Touch devices: remove hover jitter */
+@media (hover: none) and (pointer: coarse) {
+  .glass-card:hover {
+    transform: none;
+  }
+  .clickable-bracket:hover {
+    transform: none;
+  }
+  .route-card:hover {
+    transform: none;
+  }
+  .milestone-card:hover {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   1. TABLET BREAKPOINT (max-width: 1024px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .app-container {
+    max-width: 100%;
+    padding: 20px 16px 70px 16px;
+  }
+
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .section-card {
+    padding: 22px 20px;
+  }
+
+  .share-card-studio-body {
+    grid-template-columns: 1fr 280px;
+    gap: 18px;
+    padding: 18px;
+  }
+
+  .heatmap-canvas-container {
+    height: 480px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. SMALL TABLET & PHABLET (max-width: 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 16px 12px 60px 12px;
+  }
+
+  /* Navbar */
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+  }
+
+  .nav-brand {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .strava-logo-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand-text h1 {
+    font-size: 1.15rem;
+  }
+
+  .brand-text p {
+    font-size: 0.75rem;
+  }
+
+  .nav-actions {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .btn-season-wrapped {
+    flex: 1 1 auto;
+    justify-content: center;
+    font-size: 0.82rem;
+    padding: 7px 12px;
+  }
+
+  .athlete-badge {
+    padding: 4px 10px 4px 6px;
+    gap: 8px;
+  }
+
+  .athlete-avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .athlete-name {
+    font-size: 0.8rem;
+  }
+
+  .athlete-loc {
+    font-size: 0.68rem;
+  }
+
+  /* Date Filter Bar */
+  .date-filter-bar {
+    padding: 14px 16px;
+    margin-bottom: 20px;
+  }
+
+  .date-filter-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .filter-headline {
+    gap: 10px;
+  }
+
+  .filter-badge-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .filter-heading {
+    font-size: 0.9rem;
+  }
+
+  .filter-subheading {
+    font-size: 0.75rem;
+  }
+
+  .filter-reset-btn {
+    align-self: flex-start;
+    font-size: 0.72rem;
+    padding: 4px 10px;
+  }
+
+  .filter-controls-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .filter-presets-group {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 6px;
+    padding-bottom: 4px;
+    width: 100%;
+  }
+
+  .filter-presets-group::-webkit-scrollbar {
+    display: none;
+  }
+
+  .preset-pill {
+    white-space: nowrap;
+    font-size: 0.75rem;
+    padding: 5px 12px;
+    flex-shrink: 0;
+  }
+
+  .filter-dropdowns-group {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .select-wrapper {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .filter-select {
+    width: 100%;
+  }
+
+  .custom-range-inputs {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .date-input-field {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .date-picker-input {
+    flex: 1;
+  }
+
+  /* Hero Stats Grid */
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .stat-tile {
+    padding: 16px 14px;
+  }
+
+  .stat-value {
+    font-size: 1.7rem;
+  }
+
+  .stat-title {
+    font-size: 0.75rem;
+  }
+
+  .stat-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .stat-subtext {
+    font-size: 0.72rem;
+  }
+
+  /* Tabs Bar */
+  .tabs-container {
+    gap: 6px;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .tabs-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    gap: 6px;
+  }
+
+  .tab-pill {
+    font-size: 0.68rem;
+    padding: 2px 6px;
+  }
+
+  /* Section Cards */
+  .section-card {
+    padding: 18px 16px;
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+  }
+
+  /* Milestones Grid */
+  .milestones-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .milestone-card {
+    padding: 16px 12px;
+  }
+
+  .milestone-count {
+    font-size: 1.8rem;
+  }
+
+  .milestone-target {
+    font-size: 0.95rem;
+  }
+
+  /* Activities Feed */
+  .activity-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .activity-left {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .activity-stats-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .act-stat {
+    align-items: flex-start;
+  }
+
+  .act-stat-label {
+    font-size: 0.68rem;
+  }
+
+  .act-stat-val {
+    font-size: 0.88rem;
+  }
+
+  .pagination-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Route Explorer Cards */
+  .routes-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* Heatmap */
+  .heatmap-canvas-container {
+    height: 420px;
+  }
+
+  /* Share Card Studio */
+  .share-card-studio-body {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 16px;
+  }
+
+  .share-card-canvas-viewport {
+    min-height: auto;
+    padding: 14px;
+  }
+
+  /* Modals Backdrop & Content */
+  .modal-backdrop {
+    padding: 10px;
+  }
+
+  .route-map-modal {
+    width: 100%;
+    max-width: 100%;
+    height: 96vh;
+    max-height: 96vh;
+    border-radius: 16px;
+  }
+
+  .route-modal-header {
+    padding: 12px 14px;
+    gap: 10px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .route-header-info {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .route-activity-title {
+    font-size: 1.05rem;
+  }
+
+  .route-header-actions {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .route-stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .route-stat-val {
+    font-size: 1.05rem;
+  }
+
+  .route-map-viewport {
+    height: 280px;
+    min-height: 240px;
+  }
+
+  .route-modal-footer {
+    padding: 10px 14px;
+    font-size: 0.72rem;
+  }
+
+  /* Milestone Modal */
+  .milestone-modal-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 96vh !important;
+    border-radius: 16px !important;
+  }
+
+  .milestone-modal-header {
+    padding: 14px 16px !important;
+  }
+
+  .milestone-search-bar {
+    padding: 10px 14px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+
+  .milestone-activity-card {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding: 12px 14px !important;
+  }
+
+  .milestone-activity-metrics {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .milestone-activity-actions {
+    width: 100% !important;
+    justify-content: flex-end !important;
+  }
+
+  /* Strava Wrapped Phone Container */
+  .wrapped-phone-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 96vh !important;
+    max-height: 96vh !important;
+    border-radius: 20px !important;
+  }
+
+  .wrapped-slide-viewport {
+    padding: 20px 14px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. STANDARD MOBILE PHONES (max-width: 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 10px 8px 50px 8px;
+  }
+
+  .navbar {
+    padding: 12px 12px;
+  }
+
+  .strava-logo-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand-text h1 {
+    font-size: 1.05rem;
+  }
+
+  .brand-text p {
+    font-size: 0.7rem;
+  }
+
+  .nav-actions {
+    gap: 6px;
+  }
+
+  .athlete-badge {
+    padding: 3px 8px 3px 4px;
+  }
+
+  .athlete-loc {
+    display: none;
+  }
+
+  .btn-season-wrapped {
+    font-size: 0.78rem;
+    padding: 6px 10px;
+  }
+
+  .btn {
+    padding: 7px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* Hero Stats: 2x2 Clean Mobile Grid */
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .stat-tile {
+    padding: 12px 10px;
+  }
+
+  .stat-value {
+    font-size: 1.45rem;
+  }
+
+  .stat-title {
+    font-size: 0.68rem;
+  }
+
+  .stat-subtext {
+    font-size: 0.68rem;
+    line-height: 1.3;
+  }
+
+  .stat-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Milestones 2-column Grid */
+  .milestones-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .milestone-card {
+    padding: 12px 8px;
+  }
+
+  .milestone-badge-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .milestone-count {
+    font-size: 1.55rem;
+  }
+
+  .milestone-target {
+    font-size: 0.88rem;
+  }
+
+  .milestone-desc {
+    font-size: 0.68rem;
+  }
+
+  .milestone-action-hint {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+  }
+
+  /* Brackets */
+  .bracket-name {
+    font-size: 0.82rem;
+  }
+
+  .bracket-count-badge {
+    font-size: 0.88rem;
+  }
+
+  /* Months Breakdown Grid */
+  .months-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .month-card {
+    padding: 10px 8px;
+  }
+
+  .month-dist-number {
+    font-size: 1.15rem;
+  }
+
+  .month-insights-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  /* Heatmap Canvas */
+  .heatmap-canvas-container {
+    height: 360px;
+  }
+
+  /* Modals */
+  .modal-backdrop {
+    padding: 4px;
+  }
+
+  .route-map-modal {
+    border-radius: 12px;
+    height: 98vh;
+    max-height: 98vh;
+  }
+
+  .route-map-viewport {
+    height: 230px;
+  }
+
+  .route-modal-header {
+    padding: 10px 10px;
+  }
+
+  .route-activity-title {
+    font-size: 0.95rem;
+  }
+
+  .tile-style-selector {
+    overflow-x: auto;
+    max-width: 100%;
+    padding: 2px 4px;
+  }
+
+  .tile-btn {
+    padding: 2px 6px;
+    font-size: 0.68rem;
+  }
+
+  /* Grids in subtabs */
+  .gear-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .pr-trophies-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .eddington-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .consistency-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .consistency-rings-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* Wrapped Modal Content */
+  .wrapped-phone-container h2 {
+    font-size: 1.7rem !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. ULTRA-COMPACT MOBILE (max-width: 360px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 360px) {
+  .brand-text h1 {
+    font-size: 0.95rem;
+  }
+
+  .brand-text p {
+    display: none;
+  }
+
+  .hero-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .stat-value {
+    font-size: 1.3rem;
+  }
+
+  .tab-btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  .milestone-count {
+    font-size: 1.35rem;
+  }
+
+  .route-stats-strip {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+}
