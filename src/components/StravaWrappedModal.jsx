@@ -169,7 +169,7 @@ export default function StravaWrappedModal({ year = 2026, athlete, onClose }) {
         }}
       >
         {/* Story Progress Indicators Strip */}
-        <div style={{
+        <div className="wrapped-progress-strip" style={{
           display: 'flex',
           gap: '6px',
           padding: '16px 20px 8px 20px',
@@ -196,7 +196,7 @@ export default function StravaWrappedModal({ year = 2026, athlete, onClose }) {
         </div>
 
         {/* Top Header */}
-        <div style={{
+        <div className="wrapped-story-header" style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -244,14 +244,14 @@ export default function StravaWrappedModal({ year = 2026, athlete, onClose }) {
               <span className="badge-pill" style={{ background: 'rgba(252, 82, 0, 0.2)', color: 'var(--primary)', marginBottom: '16px' }}>
                 🎉 {athleteName}'s Season
               </span>
-              <h2 style={{ fontSize: '2.5rem', fontWeight: 900, fontFamily: 'var(--font-display)', margin: '0 0 12px 0', color: 'white', lineHeight: 1.1 }}>
+              <h2 className="wrapped-slide-title" style={{ fontSize: '2.5rem', fontWeight: 900, fontFamily: 'var(--font-display)', margin: '0 0 12px 0', color: 'white', lineHeight: 1.1 }}>
                 A Year of Pure Motion
               </h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '1rem', maxWidth: '360px', margin: '0 auto 28px' }}>
                 You showed up, pushed through sunrise miles, and built unbreakable endurance.
               </p>
 
-              <div style={{
+              <div className="wrapped-stat-card" style={{
                 background: 'rgba(255, 255, 255, 0.05)',
                 border: '1px solid var(--border-subtle)',
                 borderRadius: '20px',
@@ -260,7 +260,7 @@ export default function StravaWrappedModal({ year = 2026, athlete, onClose }) {
                 margin: '0 auto'
               }}>
                 <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Total Distance Moved</span>
-                <div style={{ fontSize: '3.4rem', fontWeight: 900, color: 'var(--primary)', fontFamily: 'var(--font-display)', lineHeight: 1, margin: '8px 0' }}>
+                <div className="wrapped-hero-number" style={{ fontSize: '3.4rem', fontWeight: 900, color: 'var(--primary)', fontFamily: 'var(--font-display)', lineHeight: 1, margin: '8px 0' }}>
                   {totalKm} <span style={{ fontSize: '1.4rem' }}>km</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '12px' }}>
@@ -279,14 +279,14 @@ export default function StravaWrappedModal({ year = 2026, athlete, onClose }) {
               <span className="badge-pill" style={{ background: 'rgba(0, 229, 255, 0.2)', color: '#00E5FF', marginBottom: '16px' }}>
                 Real-World Scale
               </span>
-              <h2 style={{ fontSize: '2.2rem', fontWeight: 900, fontFamily: 'var(--font-display)', margin: '0 0 12px 0', color: 'white', lineHeight: 1.2 }}>
+              <h2 className="wrapped-slide-title" style={{ fontSize: '2.2rem', fontWeight: 900, fontFamily: 'var(--font-display)', margin: '0 0 12px 0', color: 'white', lineHeight: 1.2 }}>
                 Across the Subcontinent
               </h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', maxWidth: '380px', margin: '0 auto 24px', lineHeight: 1.5 }}>
                 Your total <strong>{totalKm} km</strong> is {fun.geo_landmark || `equivalent to traveling across the globe!`}
               </p>
 
-              <div style={{
+              <div className="wrapped-stat-card" style={{
                 background: 'rgba(0, 229, 255, 0.08)',
                 border: '1px solid rgba(0, 229, 255, 0.3)',
                 borderRadius: '20px',
@@ -313,10 +313,10 @@ export default function StravaWrappedModal({ year = 2026, athlete, onClose }) {
               <span className="badge-pill" style={{ background: 'rgba(168, 85, 247, 0.2)', color: '#A855F7', marginBottom: '16px' }}>
                 Elevation King
               </span>
-              <h2 style={{ fontSize: '2.2rem', fontWeight: 900, fontFamily: 'var(--font-display)', margin: '0 0 12px 0', color: 'white', lineHeight: 1.2 }}>
+              <h2 className="wrapped-slide-title" style={{ fontSize: '2.2rem', fontWeight: 900, fontFamily: 'var(--font-display)', margin: '0 0 12px 0', color: 'white', lineHeight: 1.2 }}>
                 Touching the Clouds
               </h2>
-              <div style={{ fontSize: '3.2rem', fontWeight: 900, color: '#A855F7', fontFamily: 'var(--font-display)', margin: '12px 0' }}>
+              <div className="wrapped-hero-number" style={{ fontSize: '3.2rem', fontWeight: 900, color: '#A855F7', fontFamily: 'var(--font-display)', margin: '12px 0' }}>
                 +{totalElev} <span style={{ fontSize: '1.4rem' }}>m</span>
               </div>
               <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', maxWidth: '360px', margin: '0 auto 24px' }}>
@@ -332,11 +332,11 @@ export default function StravaWrappedModal({ year = 2026, athlete, onClose }) {
               <span className="badge-pill" style={{ background: 'rgba(16, 185, 129, 0.2)', color: '#10B981', marginBottom: '16px' }}>
                 Training Breakdown
               </span>
-              <h2 style={{ fontSize: '2rem', fontWeight: 900, fontFamily: 'var(--font-display)', margin: '0 0 20px 0', color: 'white' }}>
+              <h2 className="wrapped-slide-title" style={{ fontSize: '2rem', fontWeight: 900, fontFamily: 'var(--font-display)', margin: '0 0 20px 0', color: 'white' }}>
                 Multisport Mastery
               </h2>
 
-              <div style={{
+              <div className="wrapped-split-grid" style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
                 gap: '12px',
@@ -361,7 +361,7 @@ export default function StravaWrappedModal({ year = 2026, athlete, onClose }) {
               </div>
 
               {wrappedData?.top_month && (
-                <div style={{
+                <div className="wrapped-stat-card" style={{
                   background: 'rgba(255, 255, 255, 0.05)',
                   border: '1px solid var(--border-subtle)',
                   borderRadius: '14px',
@@ -385,11 +385,11 @@ export default function StravaWrappedModal({ year = 2026, athlete, onClose }) {
               <span className="badge-pill" style={{ background: 'rgba(255, 179, 0, 0.2)', color: '#FFB300', marginBottom: '16px' }}>
                 Endurance Champion
               </span>
-              <h2 style={{ fontSize: '2.2rem', fontWeight: 900, fontFamily: 'var(--font-display)', margin: '0 0 16px 0', color: 'white' }}>
+              <h2 className="wrapped-slide-title" style={{ fontSize: '2.2rem', fontWeight: 900, fontFamily: 'var(--font-display)', margin: '0 0 16px 0', color: 'white' }}>
                 Keep Inspiring
               </h2>
 
-              <div style={{
+              <div className="wrapped-stat-card" style={{
                 background: 'rgba(255, 255, 255, 0.05)',
                 border: '1px solid var(--border-subtle)',
                 borderRadius: '18px',
@@ -424,7 +424,7 @@ export default function StravaWrappedModal({ year = 2026, athlete, onClose }) {
         </div>
 
         {/* Slide Controls Bottom Bar */}
-        <div style={{
+        <div className="wrapped-bottom-bar" style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',

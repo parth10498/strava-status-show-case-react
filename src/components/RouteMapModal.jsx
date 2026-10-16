@@ -447,7 +447,7 @@ export default function RouteMapModal({ activity, athlete, onClose }) {
 
   return (
     <>
-      <div className="modal-backdrop" onClick={onClose}>
+      <div className="modal-backdrop" onClick={onClose} style={{ zIndex: 1100 }}>
         <div 
           className={`route-map-modal glass-card ${isFullscreen ? 'fullscreen-modal' : ''}`}
           onClick={(e) => e.stopPropagation()}
@@ -492,7 +492,7 @@ export default function RouteMapModal({ activity, athlete, onClose }) {
             <div className="route-header-actions">
               {/* Share Card Generator Button */}
               <button
-                className="btn btn-secondary"
+                className="btn btn-secondary share-card-trigger-btn"
                 onClick={() => setShowShareModal(true)}
                 style={{ padding: '6px 12px', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '6px' }}
                 title="Generate Instagram Story / WhatsApp Share Card"
@@ -502,7 +502,7 @@ export default function RouteMapModal({ activity, athlete, onClose }) {
               </button>
 
               {/* Export GPX / TCX Dropdown */}
-              <div style={{ display: 'flex', gap: '4px' }}>
+              <div className="route-export-btns" style={{ display: 'flex', gap: '4px' }}>
                 <button
                   onClick={() => handleExport('gpx')}
                   style={{
@@ -551,7 +551,7 @@ export default function RouteMapModal({ activity, athlete, onClose }) {
                   </button>
                 ))}
                 <button
-                  className="tile-btn"
+                  className="tile-btn carto-key-trigger-btn"
                   onClick={() => setShowKeyModal(true)}
                   title="Configure CARTO API Key to remove watermarks"
                   style={{
@@ -702,83 +702,80 @@ export default function RouteMapModal({ activity, athlete, onClose }) {
 
           {/* Animated Route Playback Toolbar */}
           {coordinates.length > 0 && (
-            <div className="route-playback-toolbar" style={{
-              padding: '10px 20px',
-              background: 'rgba(0, 0, 0, 0.35)',
-              borderTop: '1px solid var(--border-subtle)',
-              borderBottom: '1px solid var(--border-subtle)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '14px',
-              flexWrap: 'wrap'
-            }}>
-              {/* Play / Pause */}
-              <button
-                onClick={() => {
-                  const willPlay = !isPlaying;
-                  setIsPlaying(willPlay);
-                  if (willPlay) {
-                    trackVisitorAction('route_playback', { activity });
-                  }
-                }}
-                style={{
-                  background: isPlaying ? 'rgba(239, 68, 68, 0.2)' : `${themeColor}26`,
-                  border: `1px solid ${isPlaying ? '#EF4444' : themeColor}`,
-                  color: isPlaying ? '#EF4444' : themeColor,
-                  borderRadius: '50%',
-                  width: '36px',
-                  height: '36px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s'
-                }}
-                title={isPlaying ? 'Pause Playback' : 'Play Animated Route'}
-              >
-                {isPlaying ? <Pause size={16} /> : <Play size={16} style={{ marginLeft: '2px' }} />}
-              </button>
+            <div className="route-playback-toolbar">
+              <div className="route-playback-controls-row">
+                {/* Play / Pause */}
+                <button
+                  onClick={() => {
+                    const willPlay = !isPlaying;
+                    setIsPlaying(willPlay);
+                    if (willPlay) {
+                      trackVisitorAction('route_playback', { activity });
+                    }
+                  }}
+                  className="route-playback-play-btn"
+                  style={{
+                    background: isPlaying ? 'rgba(239, 68, 68, 0.2)' : `${themeColor}26`,
+                    border: `1px solid ${isPlaying ? '#EF4444' : themeColor}`,
+                    color: isPlaying ? '#EF4444' : themeColor,
+                    borderRadius: '50%',
+                    width: '36px',
+                    height: '36px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    flexShrink: 0
+                  }}
+                  title={isPlaying ? 'Pause Playback' : 'Play Animated Route'}
+                >
+                  {isPlaying ? <Pause size={16} /> : <Play size={16} style={{ marginLeft: '2px' }} />}
+                </button>
 
-              {/* Reset Button */}
-              <button
-                onClick={() => {
-                  setIsPlaying(false);
-                  setPlaybackProgress(0);
-                }}
-                style={{
-                  background: 'transparent',
-                  border: 'none',
-                  color: 'var(--text-muted)',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center'
-                }}
-                title="Restart Route"
-              >
-                <RotateCcw size={16} />
-              </button>
+                {/* Reset Button */}
+                <button
+                  onClick={() => {
+                    setIsPlaying(false);
+                    setPlaybackProgress(0);
+                  }}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    color: 'var(--text-muted)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    flexShrink: 0
+                  }}
+                  title="Restart Route"
+                >
+                  <RotateCcw size={16} />
+                </button>
 
-              {/* Scrub Slider */}
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step="0.002"
-                value={playbackProgress}
-                onChange={(e) => {
-                  setIsPlaying(false);
-                  setPlaybackProgress(parseFloat(e.target.value));
-                }}
-                style={{
-                  flex: 1,
-                  accentColor: themeColor,
-                  cursor: 'pointer',
-                  minWidth: '160px'
-                }}
-              />
+                {/* Scrub Slider */}
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.002"
+                  value={playbackProgress}
+                  onChange={(e) => {
+                    setIsPlaying(false);
+                    setPlaybackProgress(parseFloat(e.target.value));
+                  }}
+                  className="route-playback-slider"
+                  style={{
+                    flex: 1,
+                    accentColor: themeColor,
+                    cursor: 'pointer',
+                    minWidth: '120px'
+                  }}
+                />
+              </div>
 
               {/* Speed Multiplier Pills */}
-              <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+              <div className="route-playback-speed-wrap">
                 <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)', marginRight: '4px' }}>Speed:</span>
                 {[1, 5, 15, 30].map(s => (
                   <button
@@ -805,30 +802,20 @@ export default function RouteMapModal({ activity, athlete, onClose }) {
 
           {/* Interactive Elevation Profile Graph */}
           {elevationSvgPath && (
-            <div className="route-elevation-card" style={{
-              padding: '12px 20px',
-              background: 'rgba(10, 15, 26, 0.6)',
-              borderBottom: '1px solid var(--border-subtle)',
-              position: 'relative'
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <TrendingUp size={14} style={{ color: themeColor }} />
-                  <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)' }}>
-                    Route Elevation Profile (Hover to pinpoint hills &amp; climbs on map)
+            <div className="route-elevation-card">
+              <div className="route-elevation-header">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
+                  <TrendingUp size={14} style={{ color: themeColor, flexShrink: 0 }} />
+                  <span className="route-elevation-title">
+                    Elevation Profile
+                  </span>
+                  <span className="route-elevation-hint">
+                    (Hover to pinpoint climbs)
                   </span>
                 </div>
 
                 {hoverElevationPoint && (
-                  <div style={{
-                    fontSize: '0.8rem',
-                    background: 'rgba(255,255,255,0.1)',
-                    padding: '2px 10px',
-                    borderRadius: '12px',
-                    color: 'white',
-                    display: 'flex',
-                    gap: '12px'
-                  }}>
+                  <div className="route-elevation-hover-badge">
                     <span>📍 <strong>{hoverElevationPoint.distance_km} km</strong></span>
                     <span>⛰️ <strong>{hoverElevationPoint.elevation_m}m</strong></span>
                     <span>📈 Grade: <strong>{hoverElevationPoint.grade_pct}%</strong></span>
@@ -896,7 +883,7 @@ export default function RouteMapModal({ activity, athlete, onClose }) {
             <div className="route-footer-left">
               <span>Powered by Leaflet.js &amp; OpenStreetMap • Open-Meteo Weather</span>
             </div>
-            <div className="route-footer-right" style={{ display: 'flex', gap: '8px' }}>
+            <div className="route-footer-right">
               <button
                 onClick={() => setShowShareModal(true)}
                 className="btn btn-secondary"

@@ -2190,23 +2190,345 @@
 .route-playback-toolbar {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
-  padding: 10px 16px;
-  background: rgba(15, 23, 42, 0.95);
+  padding: 10px 20px;
+  background: rgba(10, 15, 26, 0.95);
   border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.route-playback-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 220px;
+}
+
+.route-playback-speed-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .route-elevation-card {
-  padding: 14px 18px;
-  background: rgba(15, 23, 42, 0.6);
-  border-top: 1px solid var(--border-subtle);
+  padding: 12px 20px;
+  background: rgba(10, 15, 26, 0.6);
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
 }
 
+.route-elevation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.route-elevation-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.route-elevation-hint {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.route-elevation-hover-badge {
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 10px;
+  border-radius: 12px;
+  color: white;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.route-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.route-export-btns {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+/* Share Card Studio Modal */
 .share-card-modal-content {
   width: 900px;
   max-width: 95vw;
   max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.share-card-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.share-card-studio-body {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.share-card-canvas-viewport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  min-height: 380px;
+}
+
+.share-card-canvas {
+  max-width: 100%;
+  max-height: 520px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.share-card-themes-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Milestone Benchmark Activities Modal */
+.milestone-modal-content {
+  width: 92%;
+  max-width: 840px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background: rgba(12, 17, 29, 0.96);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.milestone-modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(18, 24, 38, 0.8);
+}
+
+.milestone-modal-metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 14px 24px;
+  background: rgba(10, 15, 25, 0.95);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.milestone-search-bar {
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(14, 20, 32, 0.6);
+}
+
+.milestone-search-input-wrap {
+  position: relative;
+  flex: 1;
+}
+
+.milestone-search-input {
+  width: 100%;
+  padding: 9px 12px 9px 36px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  color: white;
+  font-size: 0.85rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.milestone-sort-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+
+.milestone-sort-select {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 0.82rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+}
+
+.milestone-sort-select option {
+  background: #0F172A;
+  color: white;
+}
+
+.milestone-activity-card {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(16, 22, 36, 0.65);
+  transition: all 0.2s ease;
+}
+
+.milestone-activity-metrics {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.85rem;
+}
+
+.milestone-activity-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* CARTO API Key Modal */
+.carto-key-modal-content {
+  width: 92%;
+  max-width: 520px;
+  padding: 24px;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.carto-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  gap: 12px;
+}
+
+.carto-modal-tip {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.carto-modal-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Strava Wrapped Phone Story Container */
+.wrapped-phone-container {
+  width: 92%;
+  max-width: 520px;
+  height: 760px;
+  max-height: 94vh;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapped-progress-strip {
+  display: flex;
+  gap: 6px;
+  padding: 16px 20px 8px 20px;
+  z-index: 20;
+}
+
+.wrapped-story-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 20px;
+  z-index: 20;
+}
+
+.wrapped-slide-viewport {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  position: relative;
+  overflow-y: auto;
+  z-index: 15;
+}
+
+.wrapped-slide-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  font-family: var(--font-display);
+  margin: 0 0 12px 0;
+  color: white;
+  line-height: 1.15;
+}
+
+.wrapped-hero-number {
+  font-size: 3.4rem;
+  font-weight: 900;
+  font-family: var(--font-display);
+  line-height: 1;
+  margin: 8px 0;
+}
+
+.wrapped-stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.wrapped-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 380px;
+  margin: 0 auto 18px auto;
+}
+
+.wrapped-bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-top: 1px solid var(--border-subtle);
+  z-index: 20;
 }
 
 /* Grids in Tab Screens */
@@ -2829,47 +3151,23 @@
     text-align: center;
   }
 
-  /* Route Modal Playback Toolbar */
-  .route-playback-hud {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  .route-playback-toolbar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  /* Heatmap */
-  .heatmap-canvas-container {
-    height: 420px;
-  }
-
-  /* Share Card Studio */
-  .share-card-studio-body {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    padding: 16px;
-  }
-
-  .share-card-canvas-viewport {
-    min-height: auto;
-    padding: 14px;
-  }
-
-  /* Modals Backdrop & Content */
+  /* ==========================================================================
+     MODALS RESPONSIVE OVERHAUL (max-width: 768px)
+     ========================================================================== */
   .modal-backdrop {
-    padding: 10px;
+    padding: 8px !important;
   }
 
+  /* 1. Route Map Modal */
   .route-map-modal {
-    width: 100%;
-    max-width: 100%;
-    height: 96vh;
-    max-height: 96vh;
-    border-radius: 16px;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 96vh !important;
+    max-height: 96vh !important;
+    border-radius: 16px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
   }
 
   .route-modal-header {
@@ -2908,25 +3206,155 @@
   }
 
   .route-map-viewport {
-    height: 280px;
-    min-height: 240px;
+    height: 250px;
+    min-height: 220px;
+    flex-shrink: 0;
+  }
+
+  .route-playback-hud {
+    position: absolute !important;
+    top: 10px !important;
+    left: 10px !important;
+    right: 10px !important;
+    padding: 6px 12px !important;
+    gap: 10px !important;
+    justify-content: space-around !important;
+    flex-direction: row !important;
+    border-radius: 10px !important;
+  }
+
+  .route-playback-hud div strong {
+    font-size: 0.9rem !important;
+  }
+
+  .route-playback-hud div span {
+    font-size: 0.65rem !important;
+  }
+
+  .route-playback-toolbar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+    padding: 10px 14px !important;
+  }
+
+  .route-playback-controls-row {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .route-playback-speed-wrap {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 6px !important;
+  }
+
+  .route-elevation-card {
+    padding: 10px 14px !important;
+  }
+
+  .route-elevation-hint {
+    display: none !important;
+  }
+
+  .route-elevation-hover-badge {
+    font-size: 0.72rem !important;
+    padding: 2px 8px !important;
+    gap: 8px !important;
   }
 
   .route-modal-footer {
-    padding: 10px 14px;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding: 10px 14px !important;
     font-size: 0.72rem;
   }
 
-  /* Milestone Modal */
+  .route-footer-left {
+    text-align: center !important;
+    font-size: 0.72rem !important;
+  }
+
+  .route-footer-right {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .route-footer-right .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* 2. Share Card Studio Modal */
+  .share-card-modal-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 96vh !important;
+    max-height: 96vh !important;
+    border-radius: 16px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .share-card-header {
+    padding: 14px 16px !important;
+  }
+
+  .share-card-header h3 {
+    font-size: 1.05rem !important;
+  }
+
+  .share-card-studio-body {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 14px !important;
+    overflow-y: visible !important;
+  }
+
+  .share-card-canvas-viewport {
+    min-height: auto !important;
+    padding: 12px !important;
+  }
+
+  .share-card-canvas {
+    max-height: 320px !important;
+    width: auto !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  .share-card-themes-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  /* 3. Milestone Activities Modal */
   .milestone-modal-content {
     width: 100% !important;
     max-width: 100% !important;
+    height: 96vh !important;
     max-height: 96vh !important;
     border-radius: 16px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
   }
 
   .milestone-modal-header {
     padding: 14px 16px !important;
+  }
+
+  .milestone-modal-metrics-strip {
+    grid-template-columns: repeat(2, 1fr) !important;
+    padding: 10px 14px !important;
+    gap: 8px !important;
   }
 
   .milestone-search-bar {
@@ -2934,6 +3362,15 @@
     flex-direction: column !important;
     align-items: stretch !important;
     gap: 8px !important;
+  }
+
+  .milestone-sort-wrap {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  .milestone-sort-select {
+    flex: 1 !important;
   }
 
   .milestone-activity-card {
@@ -2952,10 +3389,47 @@
 
   .milestone-activity-actions {
     width: 100% !important;
-    justify-content: flex-end !important;
+    justify-content: stretch !important;
   }
 
-  /* Strava Wrapped Phone Container */
+  .milestone-activity-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* 4. CARTO API Key Modal */
+  .carto-key-modal-content {
+    padding: 16px !important;
+    border-radius: 14px !important;
+    max-height: 96vh !important;
+    overflow-y: auto !important;
+  }
+
+  .carto-modal-footer {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    margin-top: 14px !important;
+  }
+
+  .carto-modal-tip {
+    text-align: center !important;
+    font-size: 0.72rem !important;
+  }
+
+  .carto-modal-buttons {
+    display: flex !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .carto-modal-buttons .btn {
+    flex: 1 !important;
+    justify-content: center !important;
+    padding: 10px !important;
+  }
+
+  /* 5. Strava Wrapped Phone Story Container */
   .wrapped-phone-container {
     width: 100% !important;
     max-width: 100% !important;
@@ -2964,8 +3438,35 @@
     border-radius: 20px !important;
   }
 
+  .wrapped-progress-strip {
+    padding: 12px 14px 6px 14px !important;
+  }
+
+  .wrapped-story-header {
+    padding: 4px 14px !important;
+  }
+
   .wrapped-slide-viewport {
-    padding: 20px 14px !important;
+    padding: 16px 14px !important;
+  }
+
+  .wrapped-slide-title {
+    font-size: 1.7rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .wrapped-hero-number {
+    font-size: 2.6rem !important;
+    margin: 4px 0 !important;
+  }
+
+  .wrapped-stat-card {
+    padding: 16px !important;
+    border-radius: 14px !important;
+  }
+
+  .wrapped-bottom-bar {
+    padding: 12px 16px !important;
   }
 }
 
@@ -3161,38 +3662,80 @@
     font-size: 0.72rem;
   }
 
-  /* Modals */
+  /* Modals: 480px Standard Mobile */
   .modal-backdrop {
-    padding: 4px;
+    padding: 4px !important;
   }
 
   .route-map-modal {
-    border-radius: 12px;
-    height: 98vh;
-    max-height: 98vh;
+    border-radius: 12px !important;
+    height: 98vh !important;
+    max-height: 98vh !important;
   }
 
   .route-map-viewport {
-    height: 230px;
+    height: 220px !important;
+    min-height: 200px !important;
   }
 
   .route-modal-header {
-    padding: 10px 10px;
+    padding: 10px 10px !important;
   }
 
   .route-activity-title {
-    font-size: 0.95rem;
+    font-size: 0.95rem !important;
+  }
+
+  .route-playback-hud {
+    top: 6px !important;
+    left: 6px !important;
+    right: 6px !important;
+    padding: 6px 8px !important;
+    gap: 6px !important;
+    justify-content: space-around !important;
+  }
+
+  .route-playback-hud strong {
+    font-size: 0.82rem !important;
+  }
+
+  .route-playback-hud span {
+    font-size: 0.6rem !important;
+  }
+
+  .route-export-btns button {
+    padding: 5px 8px !important;
+    font-size: 0.7rem !important;
   }
 
   .tile-style-selector {
-    overflow-x: auto;
-    max-width: 100%;
-    padding: 2px 4px;
+    overflow-x: auto !important;
+    max-width: 100% !important;
+    padding: 2px 4px !important;
   }
 
   .tile-btn {
-    padding: 2px 6px;
-    font-size: 0.68rem;
+    padding: 2px 6px !important;
+    font-size: 0.68rem !important;
+  }
+
+  .share-card-canvas {
+    max-height: 260px !important;
+  }
+
+  .share-card-themes-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6px !important;
+  }
+
+  .share-card-themes-grid button {
+    padding: 8px 10px !important;
+    font-size: 0.78rem !important;
+  }
+
+  .milestone-activity-metrics {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px !important;
   }
 
   /* Grids in subtabs */
@@ -3222,8 +3765,26 @@
   }
 
   /* Wrapped Modal Content */
-  .wrapped-phone-container h2 {
-    font-size: 1.7rem !important;
+  .wrapped-phone-container {
+    height: 98vh !important;
+    max-height: 98vh !important;
+    border-radius: 16px !important;
+  }
+
+  .wrapped-slide-title {
+    font-size: 1.45rem !important;
+  }
+
+  .wrapped-hero-number {
+    font-size: 2.2rem !important;
+  }
+
+  .wrapped-split-grid {
+    gap: 8px !important;
+  }
+
+  .wrapped-split-grid div {
+    padding: 10px !important;
   }
 }
 
@@ -3276,5 +3837,26 @@
 
   .activity-actions-row {
     grid-template-columns: 1fr;
+  }
+
+  /* Ultra-compact modal overrides */
+  .share-card-canvas {
+    max-height: 220px !important;
+  }
+
+  .wrapped-slide-title {
+    font-size: 1.3rem !important;
+  }
+
+  .wrapped-hero-number {
+    font-size: 1.9rem !important;
+  }
+
+  .carto-key-modal-content {
+    padding: 12px 10px !important;
+  }
+
+  .route-playback-controls-row input {
+    min-width: 80px !important;
   }
 }

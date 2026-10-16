@@ -26,14 +26,13 @@ export default function CartoKeyModal({ isOpen, onClose, onKeySaved }) {
   };
 
   return (
-    <div className="modal-backdrop" onClick={onClose} style={{ zIndex: 1200 }}>
+    <div className="modal-backdrop" onClick={onClose} style={{ zIndex: 1300 }}>
       <div 
-        className="glass-card" 
+        className="glass-card carto-key-modal-content" 
         onClick={(e) => e.stopPropagation()}
         style={{
           width: '92%',
           maxWidth: '520px',
-          padding: '24px',
           background: 'rgba(15, 23, 42, 0.96)',
           border: '1px solid rgba(252, 82, 0, 0.4)',
           boxShadow: '0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(252, 82, 0, 0.2)',
@@ -148,15 +147,15 @@ export default function CartoKeyModal({ isOpen, onClose, onKeySaved }) {
             )}
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '16px' }}>
-            <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>
+          <div className="carto-modal-footer">
+            <span className="carto-modal-tip">
               Tip: Or use <strong>Midnight Dark</strong> (100% free, no key needed).
             </span>
-            <div style={{ display: 'flex', gap: '8px' }}>
+            <div className="carto-modal-buttons">
               <button 
                 type="button"
                 onClick={onClose}
-                className="btn"
+                className="btn btn-secondary"
                 style={{
                   background: 'transparent',
                   border: '1px solid var(--border-subtle)',
@@ -181,6 +180,7 @@ export default function CartoKeyModal({ isOpen, onClose, onKeySaved }) {
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
+                  justifyContent: 'center',
                   gap: '6px'
                 }}
               >

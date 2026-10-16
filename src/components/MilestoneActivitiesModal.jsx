@@ -149,14 +149,7 @@ export default function MilestoneActivitiesModal({
         </div>
 
         {/* Metrics Strip */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-          gap: '12px',
-          padding: '12px 24px',
-          background: 'rgba(8, 11, 18, 0.95)',
-          borderBottom: '1px solid var(--border-subtle)'
-        }}>
+        <div className="milestone-modal-metrics-strip">
           <div>
             <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 600 }}>
               Total Distance
@@ -195,51 +188,24 @@ export default function MilestoneActivitiesModal({
         </div>
 
         {/* Search & Sort Bar */}
-        <div className="milestone-search-bar" style={{
-          display: 'flex',
-          gap: '10px',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          padding: '12px 24px',
-          background: 'rgba(15, 23, 42, 0.6)',
-          borderBottom: '1px solid var(--border-subtle)'
-        }}>
-          <div style={{ position: 'relative', flex: 1, minWidth: '220px' }}>
+        <div className="milestone-search-bar">
+          <div className="milestone-search-input-wrap">
             <Search size={15} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
             <input 
               type="text"
               placeholder={`Search ${activities.length} activities by title...`}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              style={{
-                width: '100%',
-                background: '#0B0F19',
-                border: '1px solid var(--border-subtle)',
-                borderRadius: '8px',
-                padding: '8px 12px 8px 34px',
-                color: 'white',
-                fontSize: '0.82rem',
-                outline: 'none'
-              }}
+              className="milestone-search-input"
             />
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div className="milestone-sort-wrap">
             <ArrowUpDown size={14} style={{ color: 'var(--text-muted)' }} />
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value)}
-              style={{
-                background: '#0B0F19',
-                border: '1px solid var(--border-subtle)',
-                color: 'white',
-                padding: '8px 12px',
-                borderRadius: '8px',
-                fontSize: '0.82rem',
-                outline: 'none',
-                cursor: 'pointer'
-              }}
+              className="milestone-sort-select"
             >
               <option value="date_desc">📅 Newest Date First</option>
               <option value="date_asc">📅 Oldest Date First</option>
@@ -383,7 +349,10 @@ export default function MilestoneActivitiesModal({
                   <div className="milestone-activity-actions" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     {hasPoly && onSelectActivityForMap && (
                       <button
-                        onClick={() => onSelectActivityForMap(act)}
+                        onClick={() => {
+                          if (onClose) onClose();
+                          onSelectActivityForMap(act);
+                        }}
                         className="btn"
                         style={{
                           background: 'rgba(252, 82, 0, 0.15)',

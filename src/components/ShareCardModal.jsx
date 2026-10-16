@@ -330,10 +330,8 @@ export default function ShareCardModal({ activity, athlete, weather, onClose }) 
         style={{
           width: '94%',
           maxWidth: '920px',
-          maxHeight: '92vh',
           display: 'flex',
           flexDirection: 'column',
-          overflow: 'hidden',
           borderColor: selectedTheme.primary,
           boxShadow: `0 0 40px ${selectedTheme.primary}33, 0 25px 60px rgba(0,0,0,0.9)`
         }}
@@ -366,9 +364,9 @@ export default function ShareCardModal({ activity, athlete, weather, onClose }) 
           <div className="share-card-canvas-viewport">
             <canvas 
               ref={canvasRef} 
+              className="share-card-canvas"
               style={{
                 maxWidth: '100%',
-                maxHeight: '520px',
                 borderRadius: '16px',
                 boxShadow: '0 15px 35px rgba(0,0,0,0.8)',
                 border: '1px solid rgba(255,255,255,0.1)'
@@ -377,7 +375,7 @@ export default function ShareCardModal({ activity, athlete, weather, onClose }) 
           </div>
 
           {/* Controls Sidebar */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div className="share-card-controls" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             {/* Format toggle */}
             <div>
               <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', display: 'block', marginBottom: '8px' }}>
@@ -435,7 +433,7 @@ export default function ShareCardModal({ activity, athlete, weather, onClose }) 
               <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', display: 'block', marginBottom: '8px' }}>
                 Color Aesthetic
               </label>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <div className="share-card-themes-grid" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {THEMES.map(theme => (
                   <button
                     key={theme.id}
